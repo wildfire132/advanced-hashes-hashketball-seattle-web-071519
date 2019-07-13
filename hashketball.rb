@@ -267,7 +267,7 @@ arr = []
   end
 end 
 
-def winning_team(hash)
+def winning_team
 arr1 = []
 arr2 = []
   game_hash.collect do |location, info|
