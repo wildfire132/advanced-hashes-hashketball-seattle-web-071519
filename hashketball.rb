@@ -311,7 +311,7 @@ arr2 = []
   end
 end 
 
-def player_with_the_longest_name
+def player_with_longest_name
 greatest_name = ""
   game_hash.collect do |location, info|
     info.collect do |stats, value|
