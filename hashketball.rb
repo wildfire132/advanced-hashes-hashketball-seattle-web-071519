@@ -310,3 +310,21 @@ arr2 = []
     return game_hash[:away][:team_name]
   end
 end 
+
+def player_with_the_longest_name(hash)
+greatest_name = ""
+  game_hash.collect do |location, info|
+    info.collect do |stats, value|
+      if stats == :players
+        value.collect do |person|
+          person.collect do |name, val|
+            if name.length > greatest_name.length
+              greatest_name = name
+            end          
+          end
+        end
+      end
+    end
+  end
+  return greatest_name
+end
