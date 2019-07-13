@@ -266,3 +266,47 @@ arr = []
     end
   end
 end 
+
+def winning_team(hash)
+arr1 = []
+arr2 = []
+  game_hash.collect do |location, info|
+    if location == :home
+      info.collect do |stats, value|
+        if stats == :players
+          value.collect do |person|
+            person.collect do |name, val|
+              val.collect do |statistics, x|
+                if statistics == :points
+                  arr1 << x
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+  game_hash.collect do |location, info|
+    if location == :away
+      info.collect do |stats, value|
+        if stats == :players
+          value.collect do |person|
+           person.collect do |name, val|
+              val.collect do |statistics, x|
+                if statistics == :points
+                  arr2 << x
+                end 
+              end
+            end
+          end
+        end
+      end
+    end
+  end 
+  if arr1.inject(:+) > arr2.inject(:+) 
+    return game_hash[:home][:team_name]
+  else 
+    return game_hash[:away][:team_name]
+  end
+end 
