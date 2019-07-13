@@ -362,7 +362,7 @@ most_steals = ""
       end
     end
   end
-  if most_steals == player_with_longest_name(game_hash)
+  if most_steals == player_with_longest_name
     return true
   else
     return false
