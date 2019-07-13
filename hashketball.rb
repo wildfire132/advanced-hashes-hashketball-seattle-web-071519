@@ -328,3 +328,43 @@ greatest_name = ""
   end
   return greatest_name
 end
+
+def long_name_steals_a_ton?
+arr = []
+most_steals = ""
+  game_hash.collect do |location, info|
+    info.collect do |stats, value|
+      if stats == :players
+        value.collect do |person|
+          person.collect do |name, val|
+            val.collect do |statistics, x|
+              if statistics == :steals
+                arr << x
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+  game_hash.collect do |location, info|
+    info.collect do |stats, value|
+      if stats == :players
+        value.collect do |person|
+          person.collect do |name, val|
+            val.collect do |statistics, x|
+              if statistics == :steals && x ==    arr.sort[-1]
+                most_steals = name
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+  if most_steals == player_with_the_longest_name(game_hash)
+    return true
+  else
+    return false
+  end
+end
